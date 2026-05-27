@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>BLE Cmmunication</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="logo">BT</div>
+  <div>
+    <h1>BLE Cmmunication</h1>
+    <div class="small muted">Scan, connect & send hex in 244-byte chunks</div>
+  </div>
+</header>
+
+<div class="grid">
+
+  <!-- LEFT CARD -->
+  <div class="card">
+
+    <div class="device-top row-between">
+      <div>
+        <div class="small muted">Device</div>
+        <div id="deviceName">— not connected —</div>
+        <div class="small muted" id="deviceId"></div>
+      </div>
+
+      <div class="row-right">
+        <button id="scanBtn">Scan</button>
+        <button id="disconnectBtn" class="ghost">Disconnect</button>
+      </div>
+    </div>
+
+    <hr class="line">
+
+    <div class="row">
+      <div class="flex1">
+        <label class="small muted">Service</label>
+        <select id="serviceSelect">
+          <option value="">auto</option>
+          <option value="6e400001-b5a3-f393-e0a9-e50e24dcca9e">Nordic UART (NUS)</option>
+          <option value="battery_service">Battery</option>
+          <option value="device_information">Device Info</option>
+        </select>
+      </div>
+
+      <div class="flex1">
+        <label class="small muted">Write Char UUID</label>
+        <input id="writeChar" type="text" placeholder="auto" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="small muted">Actions</label>
+      <div class="row-center">
+        <button id="connectBtn">Connect</button>
+        <button id="listServicesBtn" class="ghost">List</button>
+        <button id="refreshServicesBtn" class="ghost">Refresh</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="small muted">Send Text</label>
+      <div class="row-left">
+        <input id="sendText" type="text" placeholder="Text to send">
+        <button id="sendTextBtn" class="ghost">Send</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="small muted">Upload HEX File</label>
+      <input id="fileInput" type="file">
+    </div>
+
+    <div class="field">
+      <label class="small muted">Paste HEX</label>
+      <textarea id="hexInput" placeholder="Paste hex here"></textarea>
+
+      <div class="row-right">
+        <button id="sendHexBtn">Start Upload</button>
+        <button id="abortBtn" class="ghost">Abort</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="small muted">Progress</label>
+      <div class="progress"><b id="progressBar"></b></div>
+
+      <div class="space">
+        <span class="small muted">Sent <span id="bytesSent">0</span>/<span id="bytesTotal">0</span></span>
+        <span class="small muted">Speed <span id="speed">0</span> B/s</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="card">
+
+    <div class="connect-box row-between">
+      <div>
+        <div class="small muted">Connection</div>
+        <div id="connStatus" class="red">Disconnected</div>
+      </div>
+      <div class="small muted">NUS Supported</div>
+    </div>
+
+    <label class="small muted">Live Log</label>
+    <pre id="log">Ready.</pre>
+
+    <label class="small muted">Services</label>
+    <pre id="svcList">No data</pre>
+
+  </div>
+
+</div>
+
+<footer>
+  Web Bluetooth: Works on Chrome desktop & Android. <b>Not supported on iPhone.</b>
+</footer>
+
+</div>
+
+<script src="app.js?v=1001"></script>
+</body>
+</html>
